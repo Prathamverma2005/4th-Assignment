@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+protected:
+    int RollNo;
+    string Name;
+
+public:
+    void GetDetails() {
+        cout << "Enter student roll number: ";
+        cin >> RollNo;
+        cout << "Enter name of the student: ";
+        cin >> ws;
+        getline(cin, Name);
+    }
+
+    void DisplayDetails() {
+        cout << RollNo << "\t" << Name << "\t";
+    }
+};
+
+class Marks : public Student {
+protected:
+    int Subject1, Subject2;
+
+public:
+    void GetMarks() {
+        cout << "Enter the marks of subject 1: ";
+        cin >> Subject1;
+        cout << "Enter the marks of subject 2: ";
+        cin >> Subject2;
+    }
+
+    void DisplayMarks() {
+        cout << Subject1 << "\t" << Subject2 << "\t";
+    }
+};
+
+class Result : public Marks {
+private:
+    int TotalMarks;
+
+public:
+    void CalculateResult() {
+        TotalMarks = Subject1 + Subject2;
+    }
+
+    void DisplayResult() {
+        cout << TotalMarks << "\t";
+
+        if (Subject1 >= 40 && Subject2 >= 40)
+            cout << "PASSED";
+        else
+            cout << "FAILED";
+        cout << endl;
+    }
+};
+
+int main() {
+    int n;
+
+    cout << "Enter the number of students: ";
+    cin >> n;
+
+    Result students[100]; 
+
+    for (int i = 0; i < n; i++) {
+        students[i].GetDetails();
+        students[i].GetMarks();
+        students[i].CalculateResult();
+        cout << endl;
+    }
+
+    cout << "Roll No.\tName\tSubject1\tSubject2\tTotal Marks\tResult\n";
+    cout << "-------------------------------------------------------------------------------\n";
+
+    for (int i = 0; i < n; i++) {
+        students[i].DisplayDetails();
+        cout << "\t";
+        students[i].DisplayMarks();
+        students[i].DisplayResult();
+    }
+
+    cout << "-------------------------------------------------------------------------------\n";
+
+    return 0;
+}
