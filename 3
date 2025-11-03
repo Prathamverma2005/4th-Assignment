@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+class Fruit {
+protected:
+    int totalFruits;
+public:
+    Fruit() : totalFruits(0) {}
+
+    void setTotal(int total) {
+        totalFruits = total;
+    }
+    int getTotal() {
+        return totalFruits;
+    }
+};
+
+class Apples : public Fruit {
+private:
+    int numApples;
+public:
+    Apples() : numApples(0) {}
+    void setApples(int count) {
+        numApples = count;
+    }
+    int getApples() {
+        return numApples;
+    }
+};
+
+class Mangoes : public Fruit {
+private:
+    int numMangoes;
+public:
+    Mangoes() : numMangoes(0) {}
+    void setMangoes(int count) {
+        numMangoes = count;
+    }
+    int getMangoes() {
+        return numMangoes;
+    }
+};
+
+int main() {
+    Apples apples;
+    Mangoes mangoes;
+
+    int totalFruits;
+    cout << "Enter total number of fruits in the basket: ";
+    cin >> totalFruits;
+
+    int appleCount, mangoCount;
+    cout << "Enter number of apples: ";
+    cin >> appleCount;
+    cout << "Enter number of mangoes: ";
+    cin >> mangoCount;
+
+    apples.setApples(appleCount);
+    mangoes.setMangoes(mangoCount);
+
+   
+    apples.setTotal(totalFruits); 
+
+    cout << "Number of Apples: " << apples.getApples() << endl;
+    cout << "Number of Mangoes: " << mangoes.getMangoes() << endl;
+    cout << "Total fruits in basket: " << totalFruits << endl;
+
+    return 0;
+}
