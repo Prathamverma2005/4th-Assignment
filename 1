@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    int pub = 1;
+protected:
+    int prot = 2;
+private:
+    int pvt = 3;
+};
+
+class PublicDerived : public Base {
+public:
+    void show() {
+        cout << "PublicInherited: pub = " << pub << endl;     
+        cout << "PublicInherited: prot = " << prot << endl;   
+        
+    }
+};
+
+class ProtectedDerived : protected Base {
+public:
+    void show() {
+        cout << "ProtectedInherited: pub = " << pub << endl;  
+        cout << "ProtectedInherited: prot = " << prot << endl; 
+      
+    }
+};
+
+class PrivateDerived : private Base {
+public:
+    void show() {
+        cout << "PrivateInherited: pub = " << pub << endl;    
+        cout << "PrivateInherited: prot = " << prot << endl;  
+       
+    }
+};
+
+int main() {
+    PublicDerived pubObj;
+    ProtectedDerived protObj;
+    PrivateDerived privObj;
+
+    cout << "PublicDerived access:" << endl;
+    pubObj.show();
+    cout << "Public member accessible directly: " << pubObj.pub << endl; 
+
+    cout << "\nProtectedDerived access:" << endl;
+    protObj.show();
+
+    cout << "\nPrivateDerived access:" << endl;
+    privObj.show();
+
+    return 0;
+}
